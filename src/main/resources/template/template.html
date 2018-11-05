@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047) -->
+<html lang="zh-CN">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+  <title>#(title ?? "接口文档")</title>
+   <!-- Bootstrap -->
+   <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+     <link href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/googlecode.min.css" rel="stylesheet">
+  <!-- main page styles --> 
+  <link rel="stylesheet" href="style.css?#(now)" />
+  
+ </head>
+ <body class="docs" data-spy="scroll" data-target=".list"> 
+  <!-- <div id="mobile-bar"> 
+   <a class="menu-button"></a> 
+   <a class="logo" href="/"></a> 
+  </div>  -->
+  <div id="main" class="fix-sidebar"> 
+   <div class="sidebar"> 
+    <div class="sidebar-inner"> 
+     <div class="list"> 
+      <h4><a href="#">#(title ?? "接口文档")</a>
+       <!-- <select class="version-select">
+          <option value="SELF" selected="">2.x</option>
+          <option value="v1">1.0</option>
+          <option value="012">0.12</option>
+          <option value="011">0.11</option>
+        </select> --> </h4>
+      <ul class="nav navbar-nav menu-root"> 
+        #for(node : nodes)
+        <li class="menu-root-li"> <a href="##(for.index)" class="sidebar-link">#(node.title)</a>
+          <ul class="nav navbar-nav menu-sub"> 
+            #for(item : node.requestNodes )
+              <li> <a class="section-link "  href="##(for.outer.index)-#(for.index)">#(item.title)</a> </li>
+            #end
+          </ul>
+        </li> 
+        #end
+      </ul> 
+     </div> 
+    </div> 
+   </div> 
+   <div class="content guide with-sidebar installation-guide"> 
+   #for(node : nodes)  
+    <h2 id="#(for.index)">#(node.title)</h2>
+       <p>#(node.description)</p>
+    #for(item : node.requestNodes )
+    <h3 id="#(for.outer.index)-#(for.index)"> <a href="##(for.outer.index)-#(for.index)" class="headerlink" >#(item.title)</a> </h3>
+    <p>#(item.description)</p>
+    <h4> <a href="javacript:;" class="headerlink" >请求接口</a> </h4>
+    <pre><code class="yml">
+method: #(item.method)
+url: #(node.baseUrl)#(item.url)
+    </code></pre>
+    <h4> <a href="javacript:;" class="headerlink"  >参数说明</a> </h4>
+    <table> 
+     <thead> 
+      <tr> 
+       <th>参数名</th> 
+       <th>类型</th> 
+       <th>是否必须</th> 
+       <th>描述</th> 
+      </tr> 
+     </thead> 
+     <tbody> 
+       #for(param : item.paramNodes)
+      <tr> 
+       <td> <strong>#(param.name)</strong> </td> 
+       <td>#(param.type)</td> 
+       <td>#(param.required)</td> 
+       <td>#(param.description)</td> 
+      </tr> 
+      #end      
+     </tbody> 
+    </table> 
+    <h4> <a href="javacript:;" class="headerlink" title="返回结果" data-scroll="">返回结果</a> </h4>
+    <pre>
+      <div class="pre-tool">       
+        <a class="active #(for.outer.index)-#(for.index) json " onclick="showcode('#(for.outer.index)-#(for.index)','json')">[json]</a>
+        <a class="#(for.outer.index)-#(for.index) java" onclick="showcode('#(for.outer.index)-#(for.index)','java')">[java]</a>
+        <a class="#(for.outer.index)-#(for.index) cs" onclick="showcode('#(for.outer.index)-#(for.index)','cs')">[c#]</a>
+      </div>
+      <code class="json active #(for.outer.index)-#(for.index)">
+#( item.getResponseNode().toJsonApi().replaceAll("<","&lt;").replaceAll(">","&gt;"))
+    </code>
+    <code class="java #(for.outer.index)-#(for.index) " style="display:none">
+  #for(code :item.codemap.get("java") )
+#(code.replaceAll("<","&lt;").replaceAll(">","&gt;"))
+
+  #end    
+    </code>
+    <code class="cs #(for.outer.index)-#(for.index) " style="display:none">
+  #for(code :item.codemap.get("cshap") ) 
+#(code.replaceAll("<","&lt;").replaceAll(">","&gt;"))
+
+  #end    
+    </code>
+  </pre> 
+  #end
+  #end  
+   </div> 
+  </div> 
+
+     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+   <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/languages/yaml.min.js"></script>
+  <script>
+      hljs.initHighlightingOnLoad();
+    function  showcode(id,code){      
+       $("code."+id).css("display","none"); 
+       $("code."+id+"."+code).css("display","block"); 
+       $("a."+id).removeClass("active");
+       $("a."+id+"."+code).addClass("active");
+    }
+      $(function(){
+          $(".menu-root .menu-root-li").click(function(){
+              if($(this).hasClass("active"))
+                  $(this).removeClass("active");
+              else
+                  $(this).addClass("active");
+          })
+      })
+  </script>  
+ </body>
+</html>
