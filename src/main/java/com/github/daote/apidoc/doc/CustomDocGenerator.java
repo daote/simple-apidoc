@@ -29,7 +29,7 @@ public class CustomDocGenerator {
     public void generateDocs(){
         LogUtils.info("generate api docs start...");
         generateControllersDocs();
-        generateIndex(docFileNameList);
+       // generateIndex(docFileNameList);
         LogUtils.info("generate api docs done !!!");
     }
 
@@ -61,9 +61,6 @@ public class CustomDocGenerator {
         } catch (IOException e) {
             LogUtils.error("generate docs for controller file : index.html fail", e);
         }
-
-
-
 
     }
 

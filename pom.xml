@@ -6,9 +6,9 @@
 
   <groupId>com.github.daote</groupId>
   <artifactId>simple-apidoc</artifactId>
-  <version>simple-apidoc</version>
+  <version>1.0.0</version>
 
-  <name>simple-api</name>
+  <name>simple-apidoc</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.github.com/daote/simple-apidoc</url>
 
@@ -33,7 +33,7 @@
     <dependency>
       <groupId>cn.hutool</groupId>
       <artifactId>hutool-all</artifactId>
-      <version>4.1.1</version>
+      <version>[4.1.12,)</version>
     </dependency>
     <dependency>
       <groupId>com.jfinal</groupId>

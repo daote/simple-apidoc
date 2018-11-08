@@ -986,7 +986,7 @@ ul.demo li {
 .sidebar .sidebar-link {
   color: #7f8c8d;
   font-weight: 600;
-  display: inline-block;
+  display: block;
 }
 .sidebar .sidebar-link.current {
   font-weight: 600;

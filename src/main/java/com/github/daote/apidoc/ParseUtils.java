@@ -9,7 +9,6 @@ import com.github.javaparser.ast.expr.MemberValuePair;
 import com.github.javaparser.ast.expr.NormalAnnotationExpr;
 import com.github.javaparser.ast.expr.SingleMemberAnnotationExpr;
 import com.github.javaparser.ast.type.*;
-import com.lonhwin.simple.api.parser.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -295,8 +294,8 @@ public class ParseUtils {
                             fieldNode.setName(field.getNameAsString());
 
                             Type fieldType = fd.getElementType();
-                            if(fieldNode.getName().contains("children"))
-                                System.out.println(fieldNode.getName());
+//                            if(fieldNode.getName().contains("children"))
+//                                System.out.println(fieldNode.getName());
 
                             parseFieldNode(fieldNode, modelJavaFile, fieldType,resultClassName);
                         });

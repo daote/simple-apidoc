@@ -23,7 +23,7 @@ public class AppTest
 
     @Test
     public void test_generateLhtaskDocs(){
-        Resources.setDebug();
+        //Resources.setDebug();
         String projectPath="D:\\Work\\Java\\IDEAWorkSpace\\lhtask";
         String docsPath="D:\\Work\\Java\\IDEAWorkSpace\\lhtask\\src\\main\\resources\\public\\api";
         Docs.DocsConfig config = new Docs.DocsConfig();
@@ -69,6 +69,19 @@ public class AppTest
         Docs.DocsConfig config = new Docs.DocsConfig();
         config.setProjectPath(projectPath);
         config.setTitle("林火业务中心文档");
+        config.setDocsPath(docsPath);
+        config.setDocsPath(docsPath);
+        Docs.buildHtmlDocs(config);
+    }
+
+    @Test
+    public void test_generateExampleDocs(){
+        Resources.setDebug();
+        String projectPath="D:\\Work\\Java\\IDEAWorkSpace\\SpringBootBucket\\simple-example";
+        String docsPath="D:\\Work\\Java\\IDEAWorkSpace\\SpringBootBucket\\simple-example\\src\\main\\resources\\public\\api";
+        Docs.DocsConfig config = new Docs.DocsConfig();
+        config.setProjectPath(projectPath);
+        config.setTitle("API示例文档");
         config.setDocsPath(docsPath);
         config.setDocsPath(docsPath);
         Docs.buildHtmlDocs(config);
