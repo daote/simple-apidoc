@@ -4,11 +4,18 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+
   <groupId>com.github.daote</groupId>
   <artifactId>simple-apidoc</artifactId>
   <version>1.0.0</version>
 
-  <name>simple-apidoc</name>
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description>This is a simple program for generating the api document of spring/springboot application.</description>
   <!-- FIXME change it to the project's website -->
   <url>http://www.github.com/daote/simple-apidoc</url>
 
@@ -42,6 +49,27 @@
     </dependency>
   </dependencies>
 
+
+  <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <tag>master</tag>
+    <url>git@github.com:daote/simple-apidoc.git</url>
+    <connection>scm:git:git@github.com:daote/simple-apidoc.git</connection>
+    <developerConnection>scm:git:git@github.com:daote/simple-apidoc.git</developerConnection>
+  </scm>
+  <developers>
+    <developer>
+      <name>daote</name>
+      <email>443462230@qq.com</email>
+    </developer>
+  </developers>
+
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
@@ -66,15 +94,10 @@
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
         </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
+
       </plugins>
     </pluginManagement>
   </build>
+
+
 </project>

@@ -8,11 +8,44 @@
 4. 全部接口生成一个html,方便拷贝
 5. 多种返回值代码模型，json、java、c#方便前端调用
 总结：简单、好用、美观
-# Maven 和 Gradle
- 
 # 快速使用
-一张图就很清楚  
+## Maven 和 Gradle
+ ```xml
+<dependency>
+    <groupId>com.github.daote</groupId>
+    <artifactId>simple-apidoc</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+```
+compile group: 'com.github.daote', name: 'simple-apidoc', version: '1.0.0'
+```
+## 在代码中添加注释
+一张图就能说明白
+
 ![apidemo](demo.png)
+
+## 快速集成
+写一个DocUtil类，其他类也行，在main中添加如下代码。运行main函数即可
+```java
+ public static void main(String[] args) {
+         //获取项目路径
+         String projectPath=System.getProperty("user.dir");
+         //文档生成配置
+         Docs.DocsConfig config = new Docs.DocsConfig();
+         //工程项目目录
+         config.setProjectPath(projectPath);
+         //文档输出目录
+         config.setDocsPath(projectPath+"/src/main/resources/public/api");
+         //文档标题
+         config.setTitle("API示例文档");
+         //设置框架，默认spring
+         config.setMvcFramework("spring");
+         //配置
+         Docs.buildHtmlDocs(config);
+    }
+```
+
 
 
 # 其他文档工具
